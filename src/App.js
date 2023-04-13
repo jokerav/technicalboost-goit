@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import {useGetUserByIDQuery, useGetAllUsersQuery} from "./store/usersAPI";
 
 function App() {
+  const {data:allUsers=[]} = useGetAllUsersQuery()
+  const {data:user={}} = useGetUserByIDQuery(2);
+  console.log(allUsers)
+  console.log(user)
+
   return (
     <div className="App">
       <header className="App-header">
