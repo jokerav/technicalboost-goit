@@ -1,16 +1,15 @@
 import './App.css';
-import {useGetUserByIDQuery, useGetAllUsersQuery} from "./store/usersAPI";
-import User from './components/user/user'
+import {useGetUserByIDQuery} from "./store/usersAPI";
+import UsersList from "./components/usersList/usersList";
 
 function App() {
-  const {data:allUsers=[]} = useGetAllUsersQuery()
+
   const {data:user={}} = useGetUserByIDQuery(2);
-  console.log(allUsers)
   console.log(user)
 
   return (
     <div className="App">
-      <User/>
+      <UsersList/>
     </div>
   );
 }
