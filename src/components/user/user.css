@@ -1,0 +1,35 @@
+.card {
+  height: 460px;
+  width: 380px;
+  padding-top: 28px;
+  padding-bottom: 36px;
+  background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
+  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+}
+
+.logo {
+  margin-left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.picture {
+  height: 168px;
+  width: 308px;
+  background-image: url("../../img/picture.png");
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  margin: 0 auto;
+  margin-bottom: 18px;
+}
+
+.line {
+  height: 8px;
+  width: 100%;
+  background-image: url("../../img/Rectangle 1.png");
+}
+
+/*# sourceMappingURL=user.css.map */
