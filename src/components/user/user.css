@@ -30,6 +30,13 @@
   height: 8px;
   width: 100%;
   background-image: url("../../img/Rectangle 1.png");
+  position: relative;
+}
+
+.photo {
+  position: absolute;
+  left: 150px;
+  transform: translate(0, -50%);
 }
 
 /*# sourceMappingURL=user.css.map */
