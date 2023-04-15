@@ -12,8 +12,8 @@
 
 .logo {
   margin-left: 20px;
-  position: absolute;
-  top: 20px;
+  //position: absolute;
+  top: 80px;
   left: 20px;
 }
 
@@ -32,11 +32,10 @@
   width: 100%;
   background-image: url("../../img/Rectangle 1.png");
   position: relative;
-  //margin-bottom: 62px;
 }
 .photo{
 position: absolute;
-  left: 150px;
+  left: 190px;
   transform: translate(0,-50%);
   height: 80px;
   width: 80px;
