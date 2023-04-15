@@ -4,6 +4,7 @@ import "./userList.scss"
 
 const UsersList = () => {
     const {data = []} = useGetAllUsersQuery();
+
     return (
         <ul className='userList'>
             {data.length > 0 && data.map(user =>
