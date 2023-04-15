@@ -1,7 +1,8 @@
 @import '../../vars';
+
 .card {
   box-sizing: border-box;
-  height: 460px;
+  //height: 460px;
   width: 380px;
   padding-top: 28px;
   padding-bottom: 36px;
@@ -26,32 +27,40 @@
   background-position: 50%;
   margin: 0 auto;
   margin-bottom: 18px;
+  box-sizing: border-box;
+  //position: relative;
 }
-.line{
+
+.line {
   height: 8px;
-  width: 100%;
+  //width: 100%;
   background-image: url("../../img/Rectangle 1.png");
   position: relative;
 }
-.photo{
-position: absolute;
-  left: 190px;
-  transform: translate(0,-50%);
+
+.photo {
+  position: absolute;
+  margin-left: 140px;
+  transform: translate(0, -50%);
+  //left: 190px;
+  display: block;
   height: 80px;
   width: 80px;
 }
-.tweets{
+
+.tweets {
   margin-top: 62px;
   font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
-color: $accent;
+  color: $accent;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 16px;
 }
-.followers{
+
+.followers {
   font-family: Montserrat;
   font-size: 20px;
   font-weight: 500;
@@ -61,7 +70,8 @@ color: $accent;
   text-align: center;
   margin-bottom: 26px;
 }
-.btnFollow{
+
+.btnFollow {
   background: $accent;
   color: $btnText;
   margin: 0 auto;
@@ -79,6 +89,7 @@ color: $accent;
   text-transform: uppercase;
   cursor: pointer;
 }
-.isFollow{
-background: rgba(92, 211, 168, 1)
+
+.isFollow {
+  background: rgba(92, 211, 168, 1)
 }

@@ -5,22 +5,24 @@ import boy2x from '../../img/Boy@2x.png'
 import {useDispatch, useSelector} from "react-redux";
 import {getFollow} from "../../store/selectors";
 import {addFollow, removeFollow} from "../../store/dataSlice";
+import {useIncrementFollowersMutation, useDecrementFollowersMutation} from "../../store/usersAPI";
 
 const User = ({user}) => {
     const dispatch = useDispatch();
     const follow = useSelector(getFollow);
+    const [incrementFollowers] = useIncrementFollowersMutation();
+    const [decrementFollowers] = useDecrementFollowersMutation()
     const {tweets, followers, id} = user;
     const isFollowing = follow.includes(id);
     const handleClick = () => {
         if (!isFollowing) {
-            dispatch(addFollow({id}))
-            console.log("addFollow")
+            dispatch(addFollow({id}));
+            incrementFollowers({id, followers: followers +1});
         }
         if (isFollowing){
             dispatch(removeFollow({id}));
-            console.log('remove follow')
+            decrementFollowers({id, followers: followers - 1})
         }
-        console.log(follow)
     }
     return (
         <div className='card'>

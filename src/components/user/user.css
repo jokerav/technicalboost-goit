@@ -1,6 +1,5 @@
 .card {
   box-sizing: border-box;
-  height: 460px;
   width: 380px;
   padding-top: 28px;
   padding-bottom: 36px;
@@ -24,19 +23,20 @@
   background-position: 50%;
   margin: 0 auto;
   margin-bottom: 18px;
+  box-sizing: border-box;
 }
 
 .line {
   height: 8px;
-  width: 100%;
   background-image: url("../../img/Rectangle 1.png");
   position: relative;
 }
 
 .photo {
   position: absolute;
-  left: 190px;
+  margin-left: 140px;
   transform: translate(0, -50%);
+  display: block;
   height: 80px;
   width: 80px;
 }
