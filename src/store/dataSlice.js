@@ -19,7 +19,8 @@ const dataSlice = createSlice({
         },
         removeFollow(state, {payload}){
             const {id} = payload;
-            state.followList.filter(item => item === id)
+            const index = state.followList.findIndex(item => item === id);
+            state.followList.splice(index, 1);
         }
     }
 })

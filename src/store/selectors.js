@@ -1,2 +1,2 @@
-export const getFollow = state => state.dataSlice.followList
-export const getPage = state => state.page
+export const getFollow = state => state.data.followList
+export const getPage = state => state.data.page

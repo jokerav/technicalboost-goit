@@ -83,4 +83,8 @@
   cursor: pointer;
 }
 
+.isFollow {
+  background: rgb(92, 211, 168);
+}
+
 /*# sourceMappingURL=user.css.map */

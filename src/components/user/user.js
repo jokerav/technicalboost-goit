@@ -4,29 +4,37 @@ import boy from '../../img/Boy.png'
 import boy2x from '../../img/Boy@2x.png'
 import {useDispatch, useSelector} from "react-redux";
 import {getFollow} from "../../store/selectors";
-import {addFollow} from "../../store/dataSlice";
+import {addFollow, removeFollow} from "../../store/dataSlice";
 
-const User = ({user})=>{
-    const dispatch  = useDispatch();
+const User = ({user}) => {
+    const dispatch = useDispatch();
     const follow = useSelector(getFollow);
     const {tweets, followers, id} = user;
-    const handleClick=()=>{
-        console.log(id);
-        dispatch(addFollow({id}));
+    const isFollowing = follow.includes(id);
+    const handleClick = () => {
+        if (!isFollowing) {
+            dispatch(addFollow({id}))
+            console.log("addFollow")
+        }
+        if (isFollowing){
+            dispatch(removeFollow({id}));
+            console.log('remove follow')
+        }
         console.log(follow)
     }
-    return(
+    return (
         <div className='card'>
             <Logo className='logo'/>
             <div className='picture'></div>
             <div className='line'></div>
             <picture className='photo'>
                 <source srcSet={`${boy2x} 2x, ${boy} 1x`}/>
-                <img src='#' alt='Фото' />
+                <img src='#' alt='Фото'/>
             </picture>
             <div className='tweets'>{`${tweets} tweets`}</div>
             <div className='followers'>{`${followers} followers`}</div>
-            <button className='btnFollow' onClick={()=>handleClick()}>follow</button>
+
+            <button className={isFollowing? 'btnFollow isFollow' :"btnFollow"} onClick={() => handleClick()}>{isFollowing ? 'following' : "follow"}</button>
         </div>
     )
 }
