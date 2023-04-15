@@ -3,7 +3,8 @@ import {ReactComponent as Logo} from "../../img/logo.svg";
 import boy from '../../img/Boy.png'
 import boy2x from '../../img/Boy@2x.png'
 
-const User = ()=>{
+const User = ({user})=>{
+    const {tweets, followers} = user;
     return(
         <div className='card'>
             <Logo className='logo'/>
@@ -13,8 +14,8 @@ const User = ()=>{
                 <source srcSet={`${boy2x} 2x, ${boy} 1x`}/>
                 <img src='#' alt='Фото' />
             </picture>
-            <div className='tweets'>777 tweets</div>
-            <div className='followers'>100500 Followers</div>
+            <div className='tweets'>{`${tweets} tweets`}</div>
+            <div className='followers'>{`${followers} followers`}</div>
             <button className='btnFollow'>follow</button>
         </div>
     )
