@@ -2,9 +2,19 @@ import './user.scss'
 import {ReactComponent as Logo} from "../../img/logo.svg";
 import boy from '../../img/Boy.png'
 import boy2x from '../../img/Boy@2x.png'
+import {useDispatch, useSelector} from "react-redux";
+import {getFollow} from "../../store/selectors";
+import {addFollow} from "../../store/dataSlice";
 
 const User = ({user})=>{
-    const {tweets, followers} = user;
+    const dispatch  = useDispatch();
+    const follow = useSelector(getFollow);
+    const {tweets, followers, id} = user;
+    const handleClick=()=>{
+        console.log(id);
+        dispatch(addFollow({id}));
+        console.log(follow)
+    }
     return(
         <div className='card'>
             <Logo className='logo'/>
@@ -16,7 +26,7 @@ const User = ({user})=>{
             </picture>
             <div className='tweets'>{`${tweets} tweets`}</div>
             <div className='followers'>{`${followers} followers`}</div>
-            <button className='btnFollow'>follow</button>
+            <button className='btnFollow' onClick={()=>handleClick()}>follow</button>
         </div>
     )
 }
