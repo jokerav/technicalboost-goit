@@ -1,5 +1,5 @@
 import './App.css';
-import {useGetUserByIDQuery} from "./store/usersAPI";
+// import {useGetUserByIDQuery} from "./store/usersAPI";
 import UsersList from "./components/usersList/usersList";
 
 function App() {
