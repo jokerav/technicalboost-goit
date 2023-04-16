@@ -81,6 +81,7 @@
   line-height: 1.22;
   text-transform: uppercase;
   cursor: pointer;
+  border: none;
   transition: background 250ms ease-in-out;
   transition: cursor 250ms ease-in-out;
 }
