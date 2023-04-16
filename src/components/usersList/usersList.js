@@ -28,12 +28,11 @@ const UsersList = () => {
             </ul>
             <button onClick={()=>{
                 dispatch(addPage());
-                // page = page+1;
             }}>Load more
             </button>
             <button onClick={()=> {
                 dispatch(resetPage());
-                // page = 1;
+
             }}>Reset page</button>
         </div>
     )
