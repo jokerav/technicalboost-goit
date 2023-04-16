@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getFollowList} from "../../store/selectors";
 import {addFollow, removeFollow} from "../../store/dataSlice";
 import {useSetFollowersMutation} from "../../store/usersAPI";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const User = ({user}) => {
     const dispatch = useDispatch();
@@ -14,10 +14,10 @@ const User = ({user}) => {
     let [followers, setFollowers] = useState(user.followers)
     const followList = useSelector(getFollowList);
     const [setFollowersOnServer] = useSetFollowersMutation();
-    useEffect(()=> {
-        if (!isFollowing){setFollowersOnServer({id, followers: followers + 1})}
-        if (isFollowing){setFollowersOnServer({id, followers: followers - 1})}
-    }, [followers]);
+    // useEffect(()=> {
+    //     if (!isFollowing){setFollowersOnServer({id, followers: followers + 1})}
+    //     if (isFollowing){setFollowersOnServer({id, followers: followers - 1})}
+    // }, [followers]);
 
 
     let isFollowing = followList.includes(id);
@@ -25,10 +25,13 @@ const User = ({user}) => {
     const handleClick = () => {
         if (!isFollowing) {
             dispatch(addFollow({id}));
-            setFollowers(followers+1)
+            setFollowersOnServer({id, followers: followers + 1});
+            setFollowers(followers+1);
+
         }
         if (isFollowing){
             dispatch(removeFollow({id}));
+            setFollowersOnServer({id, followers: followers - 1});
             setFollowers(followers-1)
         }
     }
