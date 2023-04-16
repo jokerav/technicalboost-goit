@@ -10,9 +10,7 @@ const UsersList = () => {
     const dispatch = useDispatch();
     const {data = []} = useGetAllUsersQuery();
     let page = useSelector(getPage);
-    console.log(`${page} current page`);
     let [visibleUsers, setVisibleUsers] = useState(data.slice(0, 8));
-    console.log(visibleUsers)
     useEffect(() => {
         setVisibleUsers(data.slice(0, page*8))
     }, [page, data])
@@ -32,7 +30,6 @@ const UsersList = () => {
             </button>
             <button onClick={()=> {
                 dispatch(resetPage());
-
             }}>Reset page</button>
         </div>
     )
