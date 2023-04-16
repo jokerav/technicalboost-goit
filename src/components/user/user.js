@@ -38,7 +38,7 @@ const User = ({user}) => {
                 <img src='#' alt='Фото'/>
             </picture>
             <div className='tweets'>{`${tweets} tweets`}</div>
-            <div className='followers'>{`${followers} followers`}</div>
+            <div className='followers'>{`${Intl.NumberFormat("en").format(followers)} followers`}</div>
 
             <button className={isFollowing? 'btnFollow isFollow' :"btnFollow"} onClick={() => handleClick()}>{isFollowing ? 'following' : "follow"}</button>
         </div>
