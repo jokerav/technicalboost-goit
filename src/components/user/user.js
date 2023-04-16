@@ -5,32 +5,31 @@ import boy2x from '../../img/Boy@2x.png'
 import {useDispatch, useSelector} from "react-redux";
 import {getFollowList} from "../../store/selectors";
 import {addFollow, removeFollow} from "../../store/dataSlice";
-import {useIncrementFollowersMutation, useDecrementFollowersMutation} from "../../store/usersAPI";
-import {useState} from "react";
-
+import {useSetFollowersMutation} from "../../store/usersAPI";
+import {useEffect, useState} from "react";
 
 const User = ({user}) => {
-    const followList = useSelector(getFollowList);
-    const {id, tweets, followers} = user;
-    let [nowFollows, setNowFollows] = useState(followers);
     const dispatch = useDispatch();
+    const {id, tweets} = user;
+    let [followers, setFollowers] = useState(user.followers)
+    const followList = useSelector(getFollowList);
+    const [setFollowersOnServer] = useSetFollowersMutation();
+    useEffect(()=> {
+        if (!isFollowing){setFollowersOnServer({id, followers: followers + 1})}
+        if (isFollowing){setFollowersOnServer({id, followers: followers - 1})}
+    }, [followers]);
 
-    const [incrementFollowers] = useIncrementFollowersMutation();
-    const [decrementFollowers] = useDecrementFollowersMutation();
 
+    let isFollowing = followList.includes(id);
 
-    const isFollowing = followList.includes(id);
     const handleClick = () => {
         if (!isFollowing) {
-            incrementFollowers({id, followers: followers});
             dispatch(addFollow({id}));
-            setNowFollows(followers+1)
+            setFollowers(followers+1)
         }
         if (isFollowing){
-            decrementFollowers({id, followers: followers})
             dispatch(removeFollow({id}));
-
-            setNowFollows(followers-1)
+            setFollowers(followers-1)
         }
     }
     return (
@@ -43,7 +42,7 @@ const User = ({user}) => {
                 <img src='#' alt='Фото'/>
             </picture>
             <div className='tweets'>{`${tweets} tweets`}</div>
-            <div className='followers'>{`${nowFollows} followers`}</div>
+            <div className='followers'>{`${followers} followers`}</div>
 
             <button className={isFollowing? 'btnFollow isFollow' :"btnFollow"} onClick={() => handleClick()}>{isFollowing ? 'following' : "follow"}</button>
         </div>

@@ -13,19 +13,11 @@ export const usersAPI = createApi({
         getUserByID:build.query({
             query: (id)=>`/users/${id}`
         }),
-        incrementFollowers: build.mutation({
+        setFollowers: build.mutation({
             query: ({id, followers}) => ({
                 url: `/users/${id}`,
                 method: "PUT",
-                body: {followers:followers}
-            }),
-            providesTags: ['followers'],
-        }),
-        decrementFollowers: build.mutation({
-            query: ({id, followers}) => ({
-                url: `/users/${id}`,
-                method: "PUT",
-                body: {followers:followers}
+                body: {followers}
             }),
             providesTags: ['followers'],
         }),
@@ -34,6 +26,5 @@ export const usersAPI = createApi({
 export const {
     useGetAllUsersQuery,
     useGetUserByIDQuery,
-    useIncrementFollowersMutation,
-    useDecrementFollowersMutation,
+    useSetFollowersMutation,
 } = usersAPI
