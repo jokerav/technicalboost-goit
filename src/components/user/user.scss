@@ -13,7 +13,6 @@
 
 .logo {
   margin-left: 20px;
-  //position: absolute;
   top: 80px;
   left: 20px;
 }
@@ -28,12 +27,10 @@
   margin: 0 auto;
   margin-bottom: 18px;
   box-sizing: border-box;
-  //position: relative;
 }
 
 .line {
   height: 8px;
-  //width: 100%;
   background-image: url("../../img/Rectangle 1.png");
   position: relative;
 }
@@ -42,7 +39,6 @@
   position: absolute;
   margin-left: 140px;
   transform: translate(0, -50%);
-  //left: 190px;
   display: block;
   height: 80px;
   width: 80px;
@@ -88,6 +84,8 @@
   line-height: 1.22;
   text-transform: uppercase;
   cursor: pointer;
+  transition: background 250ms ease-in-out;
+  transition: cursor 250ms ease-in-out;
 }
 
 .isFollow {
