@@ -10,16 +10,10 @@ import {useState} from "react";
 
 const User = ({user}) => {
     const dispatch = useDispatch();
-    const {id, tweets} = user;
-    let [followers, setFollowers] = useState(user.followers)
-    const followList = useSelector(getFollowList);
     const [setFollowersOnServer] = useSetFollowersMutation();
-    // useEffect(()=> {
-    //     if (!isFollowing){setFollowersOnServer({id, followers: followers + 1})}
-    //     if (isFollowing){setFollowersOnServer({id, followers: followers - 1})}
-    // }, [followers]);
-
-
+    const {id, tweets} = user;
+    let [followers, setFollowers] = useState(user.followers);
+    const followList = useSelector(getFollowList);
     let isFollowing = followList.includes(id);
 
     const handleClick = () => {
@@ -27,7 +21,6 @@ const User = ({user}) => {
             dispatch(addFollow({id}));
             setFollowersOnServer({id, followers: followers + 1});
             setFollowers(followers+1);
-
         }
         if (isFollowing){
             dispatch(removeFollow({id}));
