@@ -12,7 +12,7 @@ const UsersList = () => {
     let page = useSelector(getPage);
     let [visibleUsers, setVisibleUsers] = useState(data.slice(0, 8));
     useEffect(() => {
-        setVisibleUsers(data.slice(0, page*8))
+        setVisibleUsers(data.slice(0, page * 8))
     }, [page, data])
     return (
         <div>
@@ -24,13 +24,17 @@ const UsersList = () => {
                     />
                 )}
             </ul>
-            <button onClick={()=>{
-                dispatch(addPage());
-            }}>Load more
-            </button>
-            <button onClick={()=> {
-                dispatch(resetPage());
-            }}>Reset page</button>
+            {page <= 8 ?
+                <button className='btnFollow' onClick={() => {
+                    dispatch(addPage());
+                }}>Load more</button>
+                :
+                <button className="btnFollow" onClick={() => {
+                    dispatch(resetPage());
+                    window.scrollTo({top:0, behavior: 'smooth'})
+                }}>Reset page</button>}
+
+
         </div>
     )
 
