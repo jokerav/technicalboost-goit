@@ -24,7 +24,7 @@ const UsersList = () => {
                     />
                 )}
             </ul>
-            {page <= 8 ?
+            {page < 8 ?
                 <button className='btnFollow' onClick={() => {
                     dispatch(addPage());
                 }}>Load more</button>
