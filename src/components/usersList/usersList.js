@@ -6,6 +6,8 @@ import {getPage} from "../../store/selectors";
 import {useEffect, useState} from "react";
 import {addPage, resetPage} from "../../store/dataSlice";
 
+import { toast } from 'react-toastify';
+
 const UsersList = () => {
     const dispatch = useDispatch();
     const {data = []} = useGetAllUsersQuery();
@@ -14,6 +16,8 @@ const UsersList = () => {
     useEffect(() => {
         setVisibleUsers(data.slice(0, page * 8))
     }, [page, data])
+    const notify = () => toast("no more users ...");
+
     return (
         <div>
             <ul className='userList'>
@@ -27,6 +31,9 @@ const UsersList = () => {
             {page < 8 ?
                 <button className='btnFollow' onClick={() => {
                     dispatch(addPage());
+                    if (page === 7) {
+                        notify()
+                    };
                 }}>Load more</button>
                 :
                 <button className="btnFollow" onClick={() => {
